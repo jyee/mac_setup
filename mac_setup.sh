@@ -51,7 +51,7 @@ datadog-agent stop
 echo "Remember to install Pertino! Opening download page for you now..."
 open -a "Google Chrome.app" https://cradlepoint.com/downloads
 
-echo "======>>>>>> Restoring system files from backup..."
+echo "======>>>>>> Restoring user files from backup..."
 read -p "Enter the backup disk name:" DISK
 read -p "Enter this machine's name:" MACHINE
 
