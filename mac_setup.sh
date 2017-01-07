@@ -38,7 +38,6 @@ pip install virtualenv
 brew install ruby
 brew install rbenv
 rbenv init
-echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 brew install hugo
 brew install heroku
 brew install certbot
@@ -51,3 +50,36 @@ datadog-agent stop
 
 echo "Remember to install Pertino! Opening download page for you now..."
 open -a "Google Chrome.app" https://cradlepoint.com/downloads
+
+echo "======>>>>>> Restoring system files from backup..."
+read -p "Enter the backup disk name:" DISK
+read -p "Enter this machine's name:" MACHINE
+
+BACKUP="/Volumes/$DISK/Backups.backupdb/$MACHINE/Latest/$MACHINE/Users/jyee"
+if [ -d $BACKUP/.atom ]; then
+  cp -R $BACKUP/.atom ~/.atom
+  echo "Copied Atom settings."
+fi
+if [ -f $BACKUP/.bash_profile ]; then
+  cp $BACKUP/.bash_profile ~/.bash_profile
+  echo "Copied bash profile."
+fi
+if [ -f $BACKUP/.gitconfig ]; then
+  cp $BACKUP/.gitconfig ~/.gitconfig
+  echo "Copied git config."
+fi
+if [ -f $BACKUP/.gitignore_global ]; then
+  cp $BACKUP/.gitignore_global ~/.gitignore_global
+  echo "Copied global git ignore."
+fi
+if [ -d $BACKUP/.ssh ]; then
+  cp -R $BACKUP/.ssh ~/.ssh
+  echo "Copied ssh config and keys."
+fi
+if [ -f $BACKUP/.vimrc ]; then
+  cp $BACKUP/.vimrc ~/.vimrc
+  echo "Copied vimrc."
+fi
+
+echo "There may be other backups you should restore. Opening the backups for you to take a look..."
+open $BACKUP
