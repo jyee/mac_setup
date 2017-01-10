@@ -12,7 +12,6 @@ mas install 425424353 # The Unarchiver
 mas install 497799835 # XCode
 mas install 409183694 # Keynote
 
-
 echo "======>>>>>> Installing cask..."
 brew tap caskroom/cask
 
@@ -41,7 +40,21 @@ rbenv init
 brew install hugo
 brew install heroku
 brew install certbot
+
+iecho "======>>>>>> Installing Keybase & Keybase FS..."
 brew install keybase
+brew cask install keybase # Install Keybase file system
+keybase login
+open /Applications/Keybase.app
+read -p "Copy sensitive files from Keybase private store? (y/n)" COPYSENSITIVE
+if [ "$COPYSENSITIVE" = "y" ]; then
+  cp -R /keybase/private/jyee/.ssh ~/.ssh
+  cp /keybase/private/jyee/.bash_profile ~/.bash_profile
+fi
+
+echo "======>>>>>> Copying non-sensitive files from Github repo..."
+SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cp -R $SRCDIR/user_config/* ~/
 
 echo "======>>>>>> Installing Datadog..."
 read -p "Enter your Datadog API key: " APIKEY
@@ -50,36 +63,3 @@ datadog-agent stop
 
 echo "Remember to install Pertino! Opening download page for you now..."
 open -a "Google Chrome.app" https://cradlepoint.com/downloads
-
-echo "======>>>>>> Restoring user files from backup..."
-read -p "Enter the backup disk name:" DISK
-read -p "Enter this machine's name:" MACHINE
-
-BACKUP="/Volumes/$DISK/Backups.backupdb/$MACHINE/Latest/$MACHINE/Users/jyee"
-if [ -d $BACKUP/.atom ]; then
-  cp -R $BACKUP/.atom ~/.atom
-  echo "Copied Atom settings."
-fi
-if [ -f $BACKUP/.bash_profile ]; then
-  cp $BACKUP/.bash_profile ~/.bash_profile
-  echo "Copied bash profile."
-fi
-if [ -f $BACKUP/.gitconfig ]; then
-  cp $BACKUP/.gitconfig ~/.gitconfig
-  echo "Copied git config."
-fi
-if [ -f $BACKUP/.gitignore_global ]; then
-  cp $BACKUP/.gitignore_global ~/.gitignore_global
-  echo "Copied global git ignore."
-fi
-if [ -d $BACKUP/.ssh ]; then
-  cp -R $BACKUP/.ssh ~/.ssh
-  echo "Copied ssh config and keys."
-fi
-if [ -f $BACKUP/.vimrc ]; then
-  cp $BACKUP/.vimrc ~/.vimrc
-  echo "Copied vimrc."
-fi
-
-echo "There may be other backups you should restore. Opening the backups for you to take a look..."
-open $BACKUP
