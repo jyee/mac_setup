@@ -54,7 +54,7 @@ fi
 
 echo "======>>>>>> Copying non-sensitive files from Github repo..."
 SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cp -R $SRCDIR/user_config/* ~/
+cp -R $SRCDIR/user_config/ ~/
 
 echo "======>>>>>> Installing Datadog..."
 read -p "Enter your Datadog API key: " APIKEY
