@@ -32,6 +32,7 @@ brew cask install virtualbox
 brew cask install vlc
 
 echo "======>>>>>> Installing homebrew packages..."
+brew install coreutils
 brew install python
 pip install --upgrade pip setuptools
 pip install virtualenv
