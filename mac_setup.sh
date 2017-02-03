@@ -39,6 +39,7 @@ pip install virtualenv
 brew install ruby
 brew install rbenv
 rbenv init
+brew install go
 brew install hugo
 brew install heroku
 brew install certbot
