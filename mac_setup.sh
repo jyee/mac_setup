@@ -44,7 +44,7 @@ brew install hugo
 brew install heroku
 brew install certbot
 
-iecho "======>>>>>> Installing Keybase & Keybase FS..."
+echo "======>>>>>> Installing Keybase & Keybase FS..."
 brew install keybase
 brew cask install keybase # Install Keybase file system
 keybase login
