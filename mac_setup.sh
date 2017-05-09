@@ -48,7 +48,6 @@ rbenv init
 brew install go
 brew install hugo
 brew install heroku
-brew install certbot
 
 echo "======>>>>>> Installing Keybase & Keybase FS..."
 brew install keybase
