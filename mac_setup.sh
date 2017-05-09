@@ -24,12 +24,18 @@ brew cask install dropbox
 brew cask install firefox
 brew cask install google-chrome
 brew cask install google-drive
-brew cask install minikube
 brew cask install nvalt
 brew cask install spotify
 brew cask install transmission
 brew cask install virtualbox
 brew cask install vlc
+
+read -p "Install Kuberenetes & dev packages? (y/n)" INSTALLK8S
+if [ "$INSTALLK8S" = "y" ]; then
+  brew cask install minikube
+  brew install kubectl
+  brew install kubernetes-helm
+fi
 
 echo "======>>>>>> Installing homebrew packages..."
 brew install coreutils
