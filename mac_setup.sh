@@ -24,6 +24,7 @@ brew cask install dropbox
 brew cask install firefox
 brew cask install google-chrome
 brew cask install google-drive
+brew cask install imageoptim
 brew cask install nvalt
 brew cask install spotify
 brew cask install transmission
