@@ -40,9 +40,11 @@ fi
 
 echo "======>>>>>> Installing homebrew packages..."
 brew install coreutils
-brew install python
-pip install --upgrade pip setuptools
-pip install virtualenv
+brew install python2
+brew install python3
+pip2 install --upgrade pip setuptools
+pip2 install virtualenv
+brew install pyinvoke # Used for Datadog Agent 6
 brew install ruby
 brew install rbenv
 rbenv init
@@ -65,10 +67,13 @@ echo "======>>>>>> Copying non-sensitive files from Github repo..."
 SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cp -R $SRCDIR/user_config/ ~/
 
-echo "======>>>>>> Installing Datadog..."
-read -p "Enter your Datadog API key: " APIKEY
-DD_API_KEY=$APIKEY bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/dd-agent/master/packaging/osx/install.sh)"
-datadog-agent stop
+read -p "Install Datadog? (y/n)" INSTALLDD
+if [ "$INSTALLDD" == "y"]; then
+  echo "======>>>>>> Installing Datadog..."
+  read -p "Enter your Datadog API key: " APIKEY
+  DD_API_KEY=$APIKEY bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/dd-agent/master/packaging/osx/install.sh)"
+  datadog-agent stop
+fi
 
 echo "Remember to install Pertino! Opening download page for you now..."
 open -a "Google Chrome.app" https://cradlepoint.com/downloads
