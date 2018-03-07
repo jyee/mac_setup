@@ -71,9 +71,6 @@ read -p "Install Datadog? (y/n)" INSTALLDD
 if [ "$INSTALLDD" == "y"]; then
   echo "======>>>>>> Installing Datadog..."
   read -p "Enter your Datadog API key: " APIKEY
-  DD_API_KEY=$APIKEY bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/dd-agent/master/packaging/osx/install.sh)"
+  DD_API_KEY=$APIKEY bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/datadog-agent/master/cmd/agent/install_mac_os.sh)"
   datadog-agent stop
 fi
-
-echo "Remember to install Pertino! Opening download page for you now..."
-open -a "Google Chrome.app" https://cradlepoint.com/downloads
