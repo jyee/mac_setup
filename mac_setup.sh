@@ -33,7 +33,7 @@ brew cask install virtualbox
 brew cask install vlc
 
 read -p "Install Kuberenetes & dev packages? (y/n)" INSTALLK8S
-if [ "$INSTALLK8S" = "y" ]; then
+if [ "$INSTALLK8S" == "y" ]; then
   brew cask install minikube
   brew install kubectl
   brew install kubernetes-helm
