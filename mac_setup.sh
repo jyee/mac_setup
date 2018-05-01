@@ -22,9 +22,9 @@ brew cask install cloak
 brew cask install docker
 brew cask install dropbox
 brew cask install firefox
+brew cask install google-backup-and-sync
 brew cask install google-chrome
 brew cask install google-cloud-sdk
-brew cask install google-drive
 brew cask install imageoptim
 brew cask install nvalt
 brew cask install spotify
