@@ -29,29 +29,19 @@ brew cask install imageoptim
 brew cask install nvalt
 brew cask install spotify
 brew cask install transmission
-brew cask install virtualbox
 brew cask install vlc
-
-read -p "Install Kuberenetes & dev packages? (y/n)" INSTALLK8S
-if [ "$INSTALLK8S" == "y" ]; then
-  brew cask install minikube
-  brew install kubectl
-  brew install kubernetes-helm
-fi
 
 echo "======>>>>>> Installing homebrew packages..."
 brew install coreutils
-brew install python2
-brew install python3
-pip2 install --upgrade pip setuptools
-pip2 install virtualenv
-brew install pyinvoke # Used for Datadog Agent 6
+brew install pyenv
 brew install ruby
 brew install rbenv
 rbenv init
 brew install go
 brew install hugo
 brew install heroku
+brew install kubectl
+brew install kubernetes-helm
 
 echo "======>>>>>> Installing Keybase & Keybase FS..."
 brew install keybase
@@ -68,10 +58,10 @@ echo "======>>>>>> Copying non-sensitive files from Github repo..."
 SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cp -R $SRCDIR/user_config/ ~/
 
-read -p "Install Datadog? (y/n)" INSTALLDD
-if [ "$INSTALLDD" == "y"]; then
-  echo "======>>>>>> Installing Datadog..."
-  read -p "Enter your Datadog API key: " APIKEY
-  DD_API_KEY=$APIKEY bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/datadog-agent/master/cmd/agent/install_mac_os.sh)"
-  datadog-agent stop
-fi
+# Finish PyEnv installation
+echo -e '\n#Pyenv Shim\nif command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
+source ~/.bash_profile
+# These are currently supported by Heroku, so I want them for testing.
+pyenv install 2.7.15
+pyenv install 3.6.6
+pyenv install 3.7.0
