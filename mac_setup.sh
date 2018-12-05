@@ -34,9 +34,7 @@ brew cask install vlc
 echo "======>>>>>> Installing homebrew packages..."
 brew install coreutils
 brew install pyenv
-brew install ruby
 brew install rbenv
-rbenv init
 brew install go
 brew install hugo
 brew install heroku
@@ -65,3 +63,9 @@ source ~/.bash_profile
 pyenv install 2.7.15
 pyenv install 3.6.6
 pyenv install 3.7.0
+
+# Finish RvEnv installation. Install Heroku supported versions.
+rbenv init
+rbenv install 2.3.8
+rbenv install 2.4.5
+rbenv install 2.5.3
