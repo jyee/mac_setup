@@ -26,12 +26,14 @@ brew cask install google-backup-and-sync
 brew cask install google-chrome
 brew cask install google-cloud-sdk
 brew cask install imageoptim
+brew cask install ipvanish-vpn
 brew cask install nvalt
 brew cask install spotify
 brew cask install transmission
 brew cask install vlc
 
 echo "======>>>>>> Installing homebrew packages..."
+brew install aerial
 brew install coreutils
 brew install pyenv
 brew install rbenv
@@ -40,6 +42,7 @@ brew install hugo
 brew install heroku
 brew install kubectl
 brew install kubernetes-helm
+brew install wget
 
 echo "======>>>>>> Installing Keybase & Keybase FS..."
 brew install keybase
