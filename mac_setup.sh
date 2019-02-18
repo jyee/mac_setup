@@ -15,6 +15,7 @@ mas install 409183694 # Keynote
 echo "======>>>>>> Installing cask..."
 brew tap caskroom/cask
 
+brew cask install aerial
 brew cask install atom
 brew cask install android-file-transfer
 brew cask install avibrazil-rdm
@@ -33,7 +34,6 @@ brew cask install transmission
 brew cask install vlc
 
 echo "======>>>>>> Installing homebrew packages..."
-brew install aerial
 brew install coreutils
 brew install pyenv
 brew install rbenv
