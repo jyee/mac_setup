@@ -17,7 +17,6 @@ brew tap caskroom/cask
 
 brew cask install aerial
 brew cask install atom
-brew cask install android-file-transfer
 brew cask install avibrazil-rdm
 brew cask install cloak
 brew cask install docker
@@ -25,12 +24,12 @@ brew cask install dropbox
 brew cask install firefox
 brew cask install google-backup-and-sync
 brew cask install google-chrome
-brew cask install google-cloud-sdk
 brew cask install imageoptim
 brew cask install ipvanish-vpn
 brew cask install nvalt
 brew cask install spotify
 brew cask install transmission
+brew cask install virtualbox
 brew cask install vlc
 
 echo "======>>>>>> Installing homebrew packages..."
@@ -39,10 +38,18 @@ brew install pyenv
 brew install rbenv
 brew install go
 brew install hugo
-brew install heroku
 brew install kubectl
 brew install kubernetes-helm
+brew install minikube
 brew install wget
+
+read -p "Install Public Cloud Tools? (y/n)" PUBCLOUD
+if [ "$PUBCLOUD" = "y" ]; then
+  brew install aws-cli
+  brew cask install google-cloud-sdk
+  brew install heroku
+  brew install ibm-cloud-cli
+fi
 
 echo "======>>>>>> Installing Keybase & Keybase FS..."
 brew install keybase
