@@ -49,6 +49,7 @@ if [ "$PUBCLOUD" = "y" ]; then
   brew install aws-cli
   brew cask install google-cloud-sdk
   brew install heroku
+  heroku plugins:install heroku-accounts
   brew install ibm-cloud-cli
 fi
 
