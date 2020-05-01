@@ -42,6 +42,7 @@ brew install hugo
 brew install kubectl
 brew install kubernetes-helm
 brew install minikube
+brew install watch
 brew install wget
 
 read -p "Install Public Cloud Tools? (y/n)" PUBCLOUD
